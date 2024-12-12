@@ -6,9 +6,11 @@ Created on Thu Dec 14 16:12:43 2017
 """
 
 #imports
+
 from flask import Flask, render_template, json, request, session, redirect
-from werkzeug import generate_password_hash, check_password_hash
-from flask.ext.mysql import MySQL
+from flaskext.mysql import MySQL
+from werkzeug.security import generate_password_hash, check_password_hash
+
 
 #initialize the flask and SQL Objects
 app = Flask(__name__)
@@ -18,10 +20,10 @@ mysql = MySQL()
 app.secret_key='This is my secret key'
 
 #configure MYSQL
-app.config['MYSQL_DATABASE_USER'] = 'Arjun'
-app.config['MYSQL_DATABASE_PASSWORD'] = '1377Hello!'
+app.config['MYSQL_DATABASE_USER'] = 'root'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'Ayansh@123'
 app.config['MYSQL_DATABASE_DB'] = 'BucketList'
-app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+app.config['MYSQL_DATABASE_HOST'] = '127.0.0.1'
 mysql.init_app(app)
 
 #helper function
