@@ -63,8 +63,6 @@ jobs:
           path: |
             .
             !venv/
-
-  
             
   deploy:
     permissions:
@@ -82,12 +80,22 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           
-      - name: Azure CLI script
+      - name: Azure CLI script to show current subscription
         uses: azure/cli@v2
         with:
           azcliversion: latest
           inlineScript: |
             az account show
+      
+      - name: Create Azure Web App 
+        uses: azure/cli@v2
+        with:
+          azcliversion: latest
+          inlineScript: |
+            az appservice plan create --name webappsvcplanmahesh --resource-group Intellipaat --sku BI
+            az webapp create --name maheshwebapp --resource-group Intellipaat --plan webappsvcplanmahesh --runtime 3.12
+            az webapp show --name maheshwebapp --resource-group Intellipaat
+
 
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
