@@ -50,9 +50,7 @@ jobs:
           source venv/bin/activate
 
       - name: Install dependencies
-        run: pip install flask
-             pip install PyMySQL
-             pip install werkzeug
+        run: pip install -r requirements.txt
 
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
