@@ -92,7 +92,7 @@ jobs:
         with:
           azcliversion: latest
           inlineScript: |
-            az appservice plan create --name webappsvcplanmahesh --resource-group Intellipaat --sku BI
+            az appservice plan create --name webappsvcplanmahesh --resource-group Intellipaat --sku FREE
             az webapp create --name maheshwebapp --resource-group Intellipaat --plan webappsvcplanmahesh --runtime 3.12
             az webapp show --name maheshwebapp --resource-group Intellipaat
 
